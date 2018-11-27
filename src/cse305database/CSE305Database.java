@@ -9,7 +9,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,7 +35,25 @@ public class CSE305Database {
     }
     public static ArrayList<Movie> searchMovies(String phrase)
     {
-        return null;
+        ArrayList<Movie> matchedMovies = new ArrayList<>();
+        try {
+            Connection conn = MyConnection.getConnection();
+            String statement = "SELECT * FROM Movie";
+            PreparedStatement st = conn.prepareStatement(statement);
+            String regex = "." + "phrase" + ".";
+            ResultSet rs = st.executeQuery();
+            while(rs.next()) {
+                String movieName = rs.getString("Name");
+                if(movieName.matches(regex)) {
+                    int movieID = rs.getInt("ID");
+                    matchedMovies.add(getMovie(movieID));
+                }
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(CSE305Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return matchedMovies;
     }
     public static ArrayList<Director> searchDirectors(String phrase)
     {
@@ -50,6 +71,28 @@ public class CSE305Database {
     {
         return RandomStringUtils.randomNumeric(9);
     }*/
+    public static Movie getMovie(int id) {
+        try {
+            Connection conn = MyConnection.getConnection();
+            String statement = "SELECT * FROM Movie WHERE ID = " + id + ";";
+            PreparedStatement st = conn.prepareStatement(statement);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()) {
+                String movieName = rs.getString("Name");
+                String director = rs.getString("Director");
+                String genre = rs.getString("Genre");
+                Double rating = rs.getDouble("Rating");
+                String maturityRating = rs.getString("MaturityRating");
+                int duration = rs.getInt("Duration");
+                int releaseDate = rs.getInt("ReleaseDate");
+                String movieImage = rs.getString("movieImage");
+                return new Movie(id, movieName, director, genre, rating, maturityRating, duration, releaseDate, movieImage);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CSE305Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
     public static boolean registerUser(String username, String password,
             String email, String displayName)
     {
@@ -76,7 +119,14 @@ public class CSE305Database {
              }
              if (success)
              {
-                 statement = "INSERT INTO User(Username, Password, Email, DisplayName) VALUES " + "('" + username + "', '" + password + "', '" + email + "', '" + displayName + "')";
+                 statement = "INSERT INTO User(Username, Password, Email, DisplayName) VALUES " 
+                         + "('" + username 
+                         + "', '" 
+                         + password 
+                         + "', '" 
+                         + email + "', '" 
+                         + displayName 
+                         + "')";
                  PreparedStatement create = conn.prepareStatement(statement);
                 create.executeUpdate();
                 return success;

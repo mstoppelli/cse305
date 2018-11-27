@@ -11,14 +11,27 @@ package cse305database;
  */
 public class Movie {
     private int ID;
+    private String name;
     private String directorName;
     private String genre;
-    private String rating;
+    private Double rating;
     private String maturityRating;
     private int duration;
     private int releaseDate;
     private String movieImage;
 
+    public Movie(int ID, String name, String directorName, String genre, Double rating, String maturityRating, int duration, int releaseDate, String movieImage) {
+        this.ID = ID;
+        this.name = name;
+        this.directorName = directorName;
+        this.genre = genre;
+        this.rating = rating;
+        this.maturityRating = maturityRating;
+        this.duration = duration;
+        this.releaseDate = releaseDate;
+        this.movieImage = movieImage;
+    }
+    
     public int getID() {
         return ID;
     }
@@ -43,11 +56,11 @@ public class Movie {
         this.genre = genre;
     }
 
-    public String getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 
@@ -81,6 +94,14 @@ public class Movie {
 
     public void setMovieImage(String movieImage) {
         this.movieImage = movieImage;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
     
 }
