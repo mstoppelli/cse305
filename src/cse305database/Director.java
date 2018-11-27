@@ -19,8 +19,6 @@ public class Director {
         this.name = name;
         this.Age = Age;
     }
-    
-    
 
     public int getID() {
         return ID;

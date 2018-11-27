@@ -32,7 +32,7 @@ public class CSE305Database {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-        
+       
     }
     public static ArrayList<Movie> searchMovies(String phrase)
     {
