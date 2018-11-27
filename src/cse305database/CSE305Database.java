@@ -6,13 +6,10 @@
 package cse305database;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import org.apache.commons.lang3.RandomStringUtils;
+import java.util.ArrayList;
 
 /**
  *
@@ -35,19 +32,19 @@ public class CSE305Database {
     }
     public static ArrayList<Movie> searchMovies(String phrase)
     {
-        
+        return null;
     }
     public static ArrayList<Director> searchDirectors(String phrase)
     {
-        
+        return null;
     }
     public static ArrayList<Actor> searchActors(String phrase)
     {
-        
+        return null;
     }
     public static ArrayList<String> getMovieReviews(int movieID)
     {
-        
+        return null;
     }
    /* public static String generateUniqueID()
     {
@@ -96,6 +93,7 @@ public class CSE305Database {
     public static boolean loginUser(String username, String password)
     {
         boolean success = false;
+        return  false;
     }
     
     public static Connection getConnection() throws Exception{

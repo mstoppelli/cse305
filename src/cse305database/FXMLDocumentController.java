@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package imbd;
+package cse305database;
 
-import static imbd.IMBD.s;
+import static cse305database.IMBD.s;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
