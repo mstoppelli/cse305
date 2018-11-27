@@ -14,6 +14,14 @@ public class Director {
     private String name;
     private int Age;
 
+    public Director(int ID, String name, int Age) {
+        this.ID = ID;
+        this.name = name;
+        this.Age = Age;
+    }
+    
+    
+
     public int getID() {
         return ID;
     }
