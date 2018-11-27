@@ -63,9 +63,27 @@ public class CSE305Database {
     {
         return null;
     }
-    public static ArrayList<String> getMovieReviews(int movieID)
+    public static ArrayList<Review> getMovieReviews(int movieID)
     {
-        return null;
+        ArrayList<Review> reviews = new ArrayList<Review>();
+        try
+        {
+            Connection conn = MyConnection.getConnection();
+            String statement = "select * from reviews where MovieID = " + movieID;
+            PreparedStatement st = conn.prepareStatement(statement);
+            ResultSet r = st.executeQuery();
+            while (r.next())
+            {
+                Review review = new Review(r.getString("Username"),
+                r.getInt("MovieID"), r.getDouble("Rating"), r.getString("ReviewText"));
+                reviews.add(review);
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+        return reviews;
     }
    /* public static String generateUniqueID()
     {
@@ -93,7 +111,7 @@ public class CSE305Database {
         }
         return null;
     }
-    public static boolean registerUser(String username, String password,
+    public static String registerUser(String username, String password,
             String email, String displayName)
     {
         boolean success = true;
@@ -106,37 +124,32 @@ public class CSE305Database {
              String currentUsername;
              String currentEmail;
              String currentDisplay;
-             if (r.next())
+             while (r.next())
              {
                  currentUsername = r.getString("Username");
                  currentEmail = r.getString("Email");
                  currentDisplay = r.getString("DisplayName");
-                 if (currentUsername.equals(username) || currentEmail.equals(email) ||
-                         currentDisplay.equals(displayName))
-                     success = false;
+                 if (currentUsername.equals(username))
+                     return "Username already in use!";
+                 if (currentEmail.equals(email)) 
+                     return "Email address already in use!";
+                 if (currentDisplay.equals(displayName))
+                     return "Display Name already in use!";
                  
                  
              }
-             if (success)
-             {
-                 statement = "INSERT INTO User(Username, Password, Email, DisplayName) VALUES " 
-                         + "('" + username 
-                         + "', '" 
-                         + password 
-                         + "', '" 
-                         + email + "', '" 
-                         + displayName 
-                         + "')";
-                 PreparedStatement create = conn.prepareStatement(statement);
+                statement = "INSERT INTO User(Username, Password, Email, DisplayName) VALUES " + "('" + username + "', '" + password + "', '" + email + "', '" + displayName + "')";
+                PreparedStatement create = conn.prepareStatement(statement);
                 create.executeUpdate();
-                return success;
-             }
+                return "True";
+             
         }
         catch (Exception e)
         {
             System.out.println(e);
+            return "False";
         }
-        return false;
+       
         
     }
             
@@ -150,13 +163,15 @@ public class CSE305Database {
              ResultSet r = st.executeQuery();
              String currentUsername;
              String currentPassword;
-             if (r.next())
+             while (r.next())
              {
                  currentUsername = r.getString("Username");
-                 currentPassword = r.getString("currentPassword");
+                 currentPassword = r.getString("Password");
                  if (currentUsername.equals(username) && currentPassword.equals(password))
                  {
-                             
+                     User u = new User(currentUsername, currentPassword, 
+                     r.getString("Email"), r.getString("DisplayName"));
+                     return u;
                  }
              }
         }
