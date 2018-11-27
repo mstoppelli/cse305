@@ -56,7 +56,7 @@ public class CSE305Database {
         boolean success = true;
         try
         {
-            Connection conn = getConnection();
+            Connection conn = MyConnection.getConnection();
             String statement = "select * from User";
              PreparedStatement st = conn.prepareStatement(statement);
              ResultSet r = st.executeQuery();
@@ -90,25 +90,34 @@ public class CSE305Database {
         
     }
             
-    public static boolean loginUser(String username, String password)
+    public static User loginUser(String username, String password)
     {
-        boolean success = false;
-        return  false;
-    }
-    
-    public static Connection getConnection() throws Exception{
-        try{
-            String driver = "com.mysql.cj.jdbc.Driver";
-            String url = "jdbc:mysql://localhost:3306/imdb";
-            String username = "root";
-            String password = "password";
-            Class.forName(driver);
-            
-            Connection conn = DriverManager.getConnection(url, username, password);
-            System.out.println("Connected to Database");
-            return conn;
-        } catch (Exception e) {System.out.println(e);}
-       return null;
+        try
+        {
+            Connection conn = MyConnection.getConnection();
+            String statement = "select * from User";
+             PreparedStatement st = conn.prepareStatement(statement);
+             ResultSet r = st.executeQuery();
+             String currentUsername;
+             String currentPassword;
+             if (r.next())
+             {
+                 currentUsername = r.getString("Username");
+                 currentPassword = r.getString("currentPassword");
+                 if (currentUsername.equals(username) && currentPassword.equals(password))
+                 {
+                             
+                 }
+             }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            return null;
+        }
+        
+        return null;
+         
     }
     
 }
