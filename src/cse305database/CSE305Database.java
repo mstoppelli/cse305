@@ -58,11 +58,47 @@ public class CSE305Database {
     }
     public static ArrayList<Director> searchDirectors(String phrase)
     {
-        return null;
+        ArrayList<Director> matchedDirectors = new ArrayList<>();
+        try {
+            Connection conn = MyConnection.getConnection();
+            String statement = "SELECT * FROM director";
+            PreparedStatement st = conn.prepareStatement(statement);
+            String regex = "." + "phrase" + ".";
+            ResultSet rs = st.executeQuery();
+            while(rs.next()) {
+                String directorName = rs.getString("Name");
+                if(directorName.matches(regex)) {
+                    int id = rs.getInt("ID");
+                    matchedDirectors.add(getDirector(id));
+                }
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(CSE305Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return matchedDirectors;
     }
     public static ArrayList<Actor> searchActors(String phrase)
     {
-        return null;
+        ArrayList<Actor> matchedActors = new ArrayList<>();
+        try {
+            Connection conn = MyConnection.getConnection();
+            String statement = "SELECT * FROM actor";
+            PreparedStatement st = conn.prepareStatement(statement);
+            String regex = "." + "phrase" + ".";
+            ResultSet rs = st.executeQuery();
+            while(rs.next()) {
+                String actorName = rs.getString("Name");
+                if(actorName.matches(regex)) {
+                    int id = rs.getInt("ID");
+                    matchedActors.add(getActor(id));
+                }
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(CSE305Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return matchedActors;
     }
     public static ArrayList<Review> getMovieReviews(int movieID)
     {
@@ -135,7 +171,7 @@ public class CSE305Database {
     public static Director getDirector(int id) {
         try {
             Connection conn = MyConnection.getConnection();
-            String statement = "SELECT * FROM Actor WHERE ID = " + id + ";";
+            String statement = "SELECT * FROM Director WHERE ID = " + id + ";";
             PreparedStatement st = conn.prepareStatement(statement);
             ResultSet rs = st.executeQuery();
             while(rs.next()) {
