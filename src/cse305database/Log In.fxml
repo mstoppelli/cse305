@@ -10,12 +10,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="291.0" prefWidth="302.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse305database.LogInController">
    <children>
-      <TextField alignment="CENTER" layoutX="41.0" layoutY="129.0" promptText="Username">
+      <TextField fx:id="username" alignment="CENTER" layoutX="41.0" layoutY="129.0" promptText="Username">
          <font>
             <Font size="17.0" />
          </font>
       </TextField>
-      <TextField alignment="CENTER" layoutX="42.0" layoutY="169.0" promptText="Password">
+      <TextField fx:id="password" alignment="CENTER" layoutX="42.0" layoutY="169.0" promptText="Password">
          <font>
             <Font size="17.0" />
          </font>

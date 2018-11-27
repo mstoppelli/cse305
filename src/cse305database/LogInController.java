@@ -5,7 +5,8 @@
  */
 package cse305database;
 
-import static cse305database.IMBD.s;
+import static cse305database.FXMLDocumentController.setWelcomeText;
+import static cse305database.FXMLDocumentController.stageLogin;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -26,14 +28,23 @@ public class LogInController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+     
     }
     @FXML
     public void signIn(ActionEvent event){
-        Scene s1 = s.getScene();
+        Scene s1 = stageLogin.getScene();
         TextField username = (TextField)s1.lookup("#username");
         TextField password = (TextField)s1.lookup("#password");
-        System.out.print("HEllo world");
+        Text error = (Text)s1.lookup("#error");
+        User user = CSE305Database.loginUser(username.getText(), password.getText());
+        if(user==null){
+            error.setVisible(true);
+        }else{
+            error.setVisible(false);
+            setWelcomeText(user);
+            stageLogin.close();
+        }
+        
     }
     
 }

@@ -17,6 +17,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
@@ -32,6 +33,35 @@ import javafx.stage.Stage;
  */
 public class FXMLDocumentController implements Initializable {
    
+    public static Stage stageLogin = null;
+    
+    public static void setWelcomeText(User user){
+        Scene s1 = s.getScene();
+        Text t = (Text)s1.lookup("#welcome");
+        t.setVisible(true);
+        t.setText("Welcome " + user.getDisplayName() + "!");
+        
+        
+        Button b = (Button)s1.lookup("#button");
+       b.setVisible(false);
+        Button logout = (Button)s1.lookup("#button1");
+       logout.setVisible(true);
+    }
+    
+    @FXML
+    private void logout(ActionEvent event) {
+        Scene s1 = s.getScene();
+        
+        Text t = (Text)s1.lookup("#welcome");
+        t.setVisible(false);
+        t.setText("");
+        
+        Button b = (Button)s1.lookup("#button");
+        b.setVisible(true);
+        Button logout = (Button)s1.lookup("#button1");
+       logout.setVisible(false);
+       //Remove Label!
+    }
     
     @FXML
     private void movie(ActionEvent event) {
@@ -56,10 +86,10 @@ public class FXMLDocumentController implements Initializable {
     private void login(ActionEvent event) throws IOException{
          Parent root = FXMLLoader.load(getClass().getResource("Log In.fxml"));
         Scene scene = new Scene(root);
-        Stage s = new Stage();
-        s.setTitle("Login");
-        s.setScene(scene);
-        s.show();
+         stageLogin = new Stage();
+        stageLogin.setTitle("Login");
+        stageLogin.setScene(scene);
+        stageLogin.show();
     }
       
      @FXML

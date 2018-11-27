@@ -10,19 +10,25 @@
 
 <AnchorPane id="AnchorPane" prefHeight="630.0" prefWidth="782.0" style="-fx-background-color: #888888;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse305database.FXMLDocumentController">
     <children>
-        <Button fx:id="button" layoutX="695.0" layoutY="32.0" onAction="#login" prefHeight="27.0" prefWidth="75.0" text="Log In" />
+        <Button fx:id="button" layoutX="693.0" layoutY="46.0" onAction="#login" prefHeight="27.0" prefWidth="75.0" text="Log In" />
+      <Button fx:id="button1" layoutX="695.0" layoutY="34.0" onAction="#logout" prefHeight="27.0" prefWidth="75.0" text="Log Out" visible="false" />
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <TextField layoutX="174.0" layoutY="31.0" prefHeight="32.0" prefWidth="330.0" promptText="Find Movies, Actors, Writers, &amp; Directors">
+      <TextField layoutX="172.0" layoutY="45.0" prefHeight="32.0" prefWidth="330.0" promptText="Find Movies, Actors, Writers, &amp; Directors">
          <font>
             <Font size="16.0" />
          </font></TextField>
-      <Button layoutX="627.0" layoutY="32.0" mnemonicParsing="false" onMouseClicked="#search" text="Search" />
+      <Button layoutX="625.0" layoutY="46.0" mnemonicParsing="false" onMouseClicked="#search" text="Search" />
       <ImageView fitHeight="65.0" fitWidth="157.0" layoutX="10.0" layoutY="15.0" onMouseClicked="#viewHomePage">
          <image>
             <Image url="@IMBD.png" />
          </image>
       </ImageView>
-      <SplitMenuButton fx:id="menuButton" layoutX="511.0" layoutY="33.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="106.0" text="Movie">
+      <Text fx:id="welcome" fill="#ebe4e4" layoutX="511.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="254.41796875">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <SplitMenuButton fx:id="menuButton" layoutX="509.0" layoutY="47.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="106.0" text="Movie">
         <items>
           <MenuItem fx:id="Movie" mnemonicParsing="false" onAction="#movie" text="Movie" />
             <MenuItem fx:id="Actor" mnemonicParsing="false" onAction="#actor" text="Actor" />
