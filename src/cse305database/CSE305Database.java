@@ -100,6 +100,62 @@ public class CSE305Database {
         }
         return matchedActors;
     }
+    public static ArrayList<Actor> findActorsWithBirthday(int month)
+    {
+        ArrayList<Actor> actors = new ArrayList<Actor>();
+        try
+        {
+            Connection conn = MyConnection.getConnection();
+            String statement = "select * from actor where MONTH(birthday)=" + month;
+            PreparedStatement st = conn.prepareStatement(statement);
+            ResultSet r = st.executeQuery();
+            while (r.next())
+            {
+                Actor a = new Actor(r.getInt("ID"), r.getString("Name"), r.getInt("Height"),
+                r.getDate("birthday"), r.getString("Gender"));
+                actors.add(a);
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            return null;
+        }
+        return actors;
+    }
+    public static ArrayList<Actor> findAllActorsOnMovie(int movieID)
+    {
+        ArrayList<Actor> actors = new ArrayList<Actor>();
+        try
+        {
+            Connection conn = MyConnection.getConnection();
+            String statement = "select * from actorsonmovie where movieID = " + movieID;
+            PreparedStatement st = conn.prepareStatement(statement);
+            ResultSet r = st.executeQuery();
+            while (r.next())
+            {
+                int actorID = r.getInt("ActorID");
+                statement = "select * from actor where ID = " + actorID;
+                st = conn.prepareStatement(statement);
+                ResultSet r1 = st.executeQuery();
+                if (r1.next())
+                {
+                    actors.add(new Actor(r1.getInt("ID"), r1.getString("Name"),
+                            r1.getInt("Height"), r1.getDate("birthday"),
+                            r1.getString("Gender")));
+                    
+                }
+                
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            return null;
+        }
+        return actors;
+    }
+    
     public static ArrayList<Review> getMovieReviews(int movieID)
     {
         ArrayList<Review> reviews = new ArrayList<Review>();
