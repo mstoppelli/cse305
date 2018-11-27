@@ -28,7 +28,10 @@ public class MyConnection {
             System.out.println("Connected to Database");
             con = conn;
             }    
-            catch (Exception e) {System.out.println(e);}
+            catch (Exception e) {
+                System.out.println("Error initializing mysql connection!");
+                System.exit(0);
+            }
         }
         return con;
     }
