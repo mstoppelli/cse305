@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -111,6 +112,43 @@ public class CSE305Database {
         }
         return null;
     }
+    
+    public static Actor getActor(int id) {
+        try {
+            Connection conn = MyConnection.getConnection();
+            String statement = "SELECT * FROM Actor WHERE ID = " + id + ";";
+            PreparedStatement st = conn.prepareStatement(statement);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()) {
+                String actorName = rs.getString("name");
+                int height = rs.getInt("height");
+                Date birthday = rs.getDate("birthday");
+                String gender = rs.getString("gender");
+                return new Actor(id, actorName, height, birthday, gender);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CSE305Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public static Director getDirector(int id) {
+        try {
+            Connection conn = MyConnection.getConnection();
+            String statement = "SELECT * FROM Actor WHERE ID = " + id + ";";
+            PreparedStatement st = conn.prepareStatement(statement);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()) {
+                String actorName = rs.getString("name");
+                int age = rs.getInt("age");
+                return new Director(id, actorName, age);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CSE305Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     public static String registerUser(String username, String password,
             String email, String displayName)
     {
