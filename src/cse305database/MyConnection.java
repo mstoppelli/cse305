@@ -7,7 +7,6 @@ package cse305database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-
 /**
  *
  * @author Nick
