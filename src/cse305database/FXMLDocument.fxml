@@ -13,7 +13,7 @@
         <Button fx:id="button" layoutX="693.0" layoutY="46.0" onAction="#login" prefHeight="27.0" prefWidth="75.0" text="Log In" />
       <Button fx:id="button1" layoutX="695.0" layoutY="34.0" onAction="#logout" prefHeight="27.0" prefWidth="75.0" text="Log Out" visible="false" />
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <TextField layoutX="172.0" layoutY="45.0" prefHeight="32.0" prefWidth="330.0" promptText="Find Movies, Actors, Writers, &amp; Directors">
+      <TextField fx:id="searchBar" layoutX="172.0" layoutY="45.0" prefHeight="32.0" prefWidth="330.0" promptText="Find Movies, Actors, Writers, &amp; Directors">
          <font>
             <Font size="16.0" />
          </font></TextField>
