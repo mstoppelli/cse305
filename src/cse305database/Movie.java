@@ -9,7 +9,7 @@ package cse305database;
  *
  * @author Nick
  */
-public class Movie {
+public class Movie implements Comparable {
     private int ID;
     private String name;
     private String directorName;
@@ -102,6 +102,11 @@ public class Movie {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return rating.compareTo(((Movie)o).rating);
     }
     
 }
