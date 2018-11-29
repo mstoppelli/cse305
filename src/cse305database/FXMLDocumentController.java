@@ -142,12 +142,12 @@ public class FXMLDocumentController implements Initializable {
         ArrayList<Actor> actorArrayList;
         
         //COMMENT OUT THIS PART OF THE CODE!!!
-        /*actorArrayList = new ArrayList<>();
+        actorArrayList = new ArrayList<>();
         Date testDate = new Date();
-        Actor testActor = new Actor(0, "Name",100,testDate,"Male");
-        actorArrayList.add(testActor);*/
+        Actor testActor = new Actor(0, "Bill Murray",100,testDate,"Male");
+        actorArrayList.add(testActor);
         
-        actorArrayList = searchActors(searchBar);
+        //actorArrayList = searchActors(searchBar);
         if(actorArrayList.size() !=0){
              ObservableList<Actor> ob = FXCollections.observableArrayList(actorArrayList);
             TableColumn name =  (TableColumn) actorTable.getColumns().get(0);

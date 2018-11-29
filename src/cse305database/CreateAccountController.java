@@ -44,7 +44,7 @@ public class CreateAccountController implements Initializable {
         String result = registerUser(user.getText(), pass.getText(), email.getText(), display.getText());
         if(result.equals("True")){
             errorCreate.setVisible(false);
-            setWelcomeText(user.getText());
+            setWelcomeText(display.getText());
             accountStage.close();
         }else{
             errorCreate.setText(result);
