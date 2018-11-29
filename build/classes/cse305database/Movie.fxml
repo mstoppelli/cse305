@@ -1,11 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller=".MovieController">
-    
+<AnchorPane id="AnchorPane" prefHeight="592.0" prefWidth="673.0" style="-fx-background-color: #888888;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse305database.MovieController">
+   <children>
+      <ImageView fitHeight="66.0" fitWidth="140.0" layoutX="14.0" layoutY="14.0">
+         <image>
+            <Image url="@IMBD.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="171.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="90.21875">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Text>
+      <Text fx:id="name" fill="WHITE" layoutX="310.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="344.109375">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="171.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Height:" wrappingWidth="114.21875">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="171.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Birthday:" wrappingWidth="125.21875">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="171.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" wrappingWidth="125.21875">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Text>
+      <Text fx:id="height" fill="WHITE" layoutX="310.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="344.109375">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="birthday" fill="WHITE" layoutX="310.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="344.109375">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="gender" fill="WHITE" layoutX="310.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="351.109375">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="171.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Movie" wrappingWidth="140.0">
+         <font>
+            <Font name="System Bold" size="45.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="200.0" fitWidth="133.0" layoutX="18.0" layoutY="95.0">
+         <image>
+            <Image url="@Movie/up.jpg" />
+         </image>
+      </ImageView>
+      <TableView layoutX="21.0" layoutY="315.0" prefHeight="193.0" prefWidth="637.0">
+        <columns>
+          <TableColumn prefWidth="113.19977188110352" text="Display Name" />
+            <TableColumn prefWidth="88.78700256347656" text="Rating" />
+          <TableColumn prefWidth="555.2129974365234" text="Reviews" />
+        </columns>
+      </TableView>
+      <TextArea fx:id="reviewText" layoutX="21.0" layoutY="524.0" prefHeight="42.0" prefWidth="549.0" />
+      <Button fx:id="reviewSubmit" layoutX="584.0" layoutY="531.0" mnemonicParsing="false" text="Submit" />
+   </children>
 </AnchorPane>

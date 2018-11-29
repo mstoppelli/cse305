@@ -112,12 +112,14 @@ public class FXMLDocumentController implements Initializable {
       @FXML
      private void director(ActionEvent event) {
          Scene s1 = s.getScene();
-   SplitMenuButton split = (SplitMenuButton)s1.lookup("#menuButton");
+        SplitMenuButton split = (SplitMenuButton)s1.lookup("#menuButton");
         split.setText("Director"); 
          movieSearch=false;
         actorSearch=false;
         directorSearch=true;
     }
+     
+     
      
      @FXML
     private void search(MouseEvent event) throws IOException{
@@ -311,6 +313,25 @@ public class FXMLDocumentController implements Initializable {
         steve.setVisible(true);
          ImageView jeff = (ImageView) s1.lookup("#jeff");
         jeff.setVisible(true);    
+    }
+   @FXML
+    private void viewMoviePage(MouseEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("Movie.fxml"));
+        Scene scene = new Scene(root);
+         stageLogin = new Stage();
+        stageLogin.setTitle("Movie");
+        stageLogin.setScene(scene);
+        stageLogin.show();
+    }
+    @FXML
+    private void viewActorPage(MouseEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("Actor.fxml"));
+        Scene scene = new Scene(root);
+         stageLogin = new Stage();
+        stageLogin.setTitle("Actor");
+        stageLogin.setScene(scene);
+        stageLogin.show();
+    
     }
     
      @FXML
