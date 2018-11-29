@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="349.0" prefWidth="302.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse305database.CreateAccountController">
+   <children>
+      <TextField fx:id="userCreate" alignment="CENTER" layoutX="40.0" layoutY="126.0" promptText="Username">
+         <font>
+            <Font size="17.0" />
+         </font></TextField>
+      <TextField fx:id="displayCreate" alignment="CENTER" layoutX="40.0" layoutY="210.0" promptText="Display Name">
+         <font>
+            <Font size="17.0" />
+         </font></TextField>
+      <TextField fx:id="emailCreate" alignment="CENTER" layoutX="40.0" layoutY="252.0" promptText="Email Address">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextField>
+      <Button layoutX="116.0" layoutY="308.0" mnemonicParsing="false" onAction="#createAccount" text="Sign Up" />
+      <ImageView fitHeight="63.0" fitWidth="132.0" layoutX="84.0" layoutY="20.0">
+         <image>
+            <Image url="@IMBD.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="errorCreate" fill="#b53c3c" layoutX="137.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error" textAlignment="CENTER" visible="false" />
+      <PasswordField fx:id="passCreate" alignment="CENTER" layoutX="40.0" layoutY="168.0" promptText="Password">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </PasswordField>
+   </children>
+</AnchorPane>

@@ -11,7 +11,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -99,6 +101,24 @@ public class CSE305Database {
             Logger.getLogger(CSE305Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return matchedActors;
+    }
+    public static List<Movie> topMovies(int amount) {
+        ArrayList<Movie> topMovies = new ArrayList<>();
+        try {
+            Connection conn = MyConnection.getConnection();
+            String statement = "SELECT * FROM Movie";
+            PreparedStatement st = conn.prepareStatement(statement);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()) {
+                topMovies.add(getMovie(rs.getInt("ID")));
+            }
+            Collections.sort(topMovies);
+            Collections.reverse(topMovies);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(CSE305Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return topMovies.subList(0, Math.min(amount, topMovies.size()));
     }
     public static ArrayList<Actor> findActorsWithBirthday(int month)
     {

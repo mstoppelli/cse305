@@ -21,7 +21,7 @@
          </font>
       </TextField>
       <Button layoutX="116.0" layoutY="218.0" mnemonicParsing="false" onAction="#signIn" text="Sign In" />
-      <Hyperlink layoutX="44.0" layoutY="253.0" text="Don't have an account? Sign up" />
+      <Hyperlink layoutX="44.0" layoutY="253.0" onAction="#linkCreateAccount" text="Don't have an account? Sign up" />
       <Text fx:id="error" fill="#b53c3c" layoutX="74.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error: Invalid Credentials" visible="false" />
       <ImageView fitHeight="63.0" fitWidth="132.0" layoutX="80.0" layoutY="30.0">
          <image>
