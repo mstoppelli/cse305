@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -48,11 +49,11 @@ public class CSE305Database {
             String statement = "SELECT * FROM Movie";
             PreparedStatement st = conn.prepareStatement(statement);
             String regex = "(.*)" + phrase + "(.*)";
+            Pattern regpattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
             ResultSet rs = st.executeQuery();
             while(rs.next()) {
                 String movieName = rs.getString("Name");
-                
-                if(movieName.matches(regex)) {
+                if(regpattern.matcher(movieName).matches()) {
                     int movieID = rs.getInt("ID");
                     matchedMovies.add(getMovie(movieID));
                 }
@@ -71,10 +72,11 @@ public class CSE305Database {
             String statement = "SELECT * FROM director";
             PreparedStatement st = conn.prepareStatement(statement);
             String regex = "(.*)" + phrase + "(.*)";
+            Pattern regpattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
             ResultSet rs = st.executeQuery();
             while(rs.next()) {
                 String directorName = rs.getString("Name");
-                if(directorName.matches(regex)) {
+                if(regpattern.matcher(directorName).matches()) {
                     int id = rs.getInt("ID");
                     matchedDirectors.add(getDirector(id));
                 }
@@ -93,10 +95,11 @@ public class CSE305Database {
             String statement = "SELECT * FROM actor";
             PreparedStatement st = conn.prepareStatement(statement);
             String regex = "(.*)" + phrase + "(.*)";
+            Pattern regpattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
             ResultSet rs = st.executeQuery();
             while(rs.next()) {
                 String actorName = rs.getString("Name");
-                if(actorName.matches(regex)) {
+                if(regpattern.matcher(actorName).matches()) {
                     int id = rs.getInt("ID");
                     matchedActors.add(getActor(id));
                 }
