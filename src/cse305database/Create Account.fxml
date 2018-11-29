@@ -14,6 +14,11 @@
          <font>
             <Font size="17.0" />
          </font></TextField>
+      <PasswordField fx:id="passCreate" alignment="CENTER" layoutX="40.0" layoutY="168.0" promptText="Password">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </PasswordField>
       <TextField fx:id="displayCreate" alignment="CENTER" layoutX="40.0" layoutY="210.0" promptText="Display Name">
          <font>
             <Font size="17.0" />
@@ -29,11 +34,6 @@
             <Image url="@IMBD.png" />
          </image>
       </ImageView>
-      <Text fx:id="errorCreate" fill="#b53c3c" layoutX="137.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error" textAlignment="CENTER" visible="false" />
-      <PasswordField fx:id="passCreate" alignment="CENTER" layoutX="40.0" layoutY="168.0" promptText="Password">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </PasswordField>
+      <Text fx:id="errorCreate" fill="#b53c3c" layoutX="17.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error" textAlignment="CENTER" visible="false" wrappingWidth="267.2783203125" />
    </children>
 </AnchorPane>
