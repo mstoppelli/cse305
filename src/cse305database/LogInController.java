@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -38,7 +39,7 @@ public class LogInController implements Initializable {
     public void signIn(ActionEvent event){
         Scene s1 = stageLogin.getScene();
         TextField username = (TextField)s1.lookup("#username");
-        TextField password = (TextField)s1.lookup("#password");
+        PasswordField password = (PasswordField)s1.lookup("#password");
         Text error = (Text)s1.lookup("#error");
         User user = CSE305Database.loginUser(username.getText(), password.getText());
         if(user==null){

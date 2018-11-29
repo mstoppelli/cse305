@@ -144,7 +144,7 @@ public class FXMLDocumentController implements Initializable {
         //COMMENT OUT THIS PART OF THE CODE!!!
         /*actorArrayList = new ArrayList<>();
         Date testDate = new Date();
-        Actor testActor = new Actor(0, "Name",100,testDate,"Male");
+        Actor testActor = new Actor(0, "Bill Murray",100,testDate,"Male");
         actorArrayList.add(testActor);*/
         
         actorArrayList = searchActors(searchBar);
