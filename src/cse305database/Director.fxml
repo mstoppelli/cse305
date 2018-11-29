@@ -15,27 +15,27 @@
             <Image url="@IMBD.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="brad" fitHeight="200.0" fitWidth="135.0" layoutX="17.0" layoutY="99.0" >
+      <ImageView fx:id="directorImage" fitHeight="210.0" fitWidth="155.0" layoutX="17.0" layoutY="99.0">
          <image>
             <Image url="@Actors/Brad%20Pitt.jpg" />
          </image>
       </ImageView>
-      <Text fill="WHITE" layoutX="171.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="90.21875">
+      <Text fill="WHITE" layoutX="211.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="90.21875">
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
       </Text>
-      <Text fx:id="name" fill="WHITE" layoutX="309.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="409.109375">
+      <Text fx:id="name" fill="WHITE" layoutX="354.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="345.109375">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="171.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age" wrappingWidth="114.21875">
+      <Text fill="WHITE" layoutX="211.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age" wrappingWidth="114.21875">
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
       </Text>
-      <Text fx:id="age" fill="WHITE" layoutX="309.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="399.109375">
+      <Text fx:id="age" fill="WHITE" layoutX="354.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="345.109375">
          <font>
             <Font size="24.0" />
          </font>

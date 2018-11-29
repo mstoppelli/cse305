@@ -42,6 +42,8 @@ import javafx.stage.Stage;
  * @author KelvinWongNYC
  */
 public class FXMLDocumentController implements Initializable {
+   public static boolean LOGINGUI = false;
+   public static User currentUser;
    
     public static Stage stageLogin = null;
     
@@ -83,6 +85,8 @@ public class FXMLDocumentController implements Initializable {
         b.setVisible(true);
         Button logout = (Button)s1.lookup("#button1");
        logout.setVisible(false);
+       currentUser = null;
+       LOGINGUI = false;
        //Remove Label!
     }
     
@@ -121,6 +125,8 @@ public class FXMLDocumentController implements Initializable {
      
     
      public static Scene actorScene;
+     public static Scene movieScence;
+      public static Scene directorScene;
      @FXML
     private void search(MouseEvent event) throws IOException{
         Scene s1 = s.getScene();
@@ -174,22 +180,22 @@ public class FXMLDocumentController implements Initializable {
         }else if(movieSearch){
             
          Parent root = FXMLLoader.load(getClass().getResource("SearchMovie.fxml"));
-        Scene scene = new Scene(root);
+         movieScence = new Scene(root);
          Stage movie = new Stage();
          movie.setTitle("Movie Search");
-          Text movieResults = (Text)scene.lookup("#searchResultsMovie");
+          Text movieResults = (Text)movieScence.lookup("#searchResultsMovie");
         movieResults.setText("Search Results for \"" + searchBar + "\"");
         
-        TableView movieTable = (TableView)scene.lookup("#movieTable");
+        TableView movieTable = (TableView)movieScence.lookup("#movieTable");
         movieTable.setPlaceholder(new Label("No search results for \"" + searchBar + "\""));
         ArrayList<Movie> movieArrayList;
         
         //Comment out this part here
-        /*movieArrayList = new ArrayList<>();
-        Movie testMovie = new Movie(0,"TEST", "DIRECTOR", "FICTIOn",5.0,"Adult",2,2006,"null");
+       /* movieArrayList = new ArrayList<>();
+        Movie testMovie = new Movie(0,"TEST", "DIRECTOR", "FICTIOn",5.0,"Adult",2,2006,"2012.jpg");
         movieArrayList.add(testMovie);*/
         
-        movieArrayList = searchMovies(searchBar);
+       movieArrayList = searchMovies(searchBar);
         if(movieArrayList.size() != 0){
             
             ObservableList<Movie> ob = FXCollections.observableArrayList(movieArrayList);
@@ -230,24 +236,24 @@ public class FXMLDocumentController implements Initializable {
         }
         
         
-        movie.setScene(scene);
+        movie.setScene(movieScence);
         movie.show();
         
         }else if(directorSearch){
                 Parent root = FXMLLoader.load(getClass().getResource("SearchDirector.fxml"));
-        Scene scene = new Scene(root);
+       directorScene = new Scene(root);
          Stage director = new Stage();
          director.setTitle("Director Search");
-         Text directorResults = (Text)scene.lookup("#searchResultsDirector");
+         Text directorResults = (Text)directorScene.lookup("#searchResultsDirector");
         directorResults.setText("Search Results for \"" + searchBar + "\"");
         
-        TableView directorTable = (TableView)scene.lookup("#directorTable");
+        TableView directorTable = (TableView)directorScene.lookup("#directorTable");
         directorTable.setPlaceholder(new Label("No search results for \"" + searchBar + "\""));
         ArrayList<Director> directorArrayList;
         
         //COMMENT THIS PART BELOW
         //directorArrayList = new ArrayList<>();
-        //directorArrayList.add(new Director(0, "NAME", 100));
+        //directorArrayList.add(new Director(0, "Don Hall", 100));
      
         directorArrayList = searchDirectors(searchBar);
         
@@ -267,7 +273,7 @@ public class FXMLDocumentController implements Initializable {
         }
      
         
-        director.setScene(scene);
+        director.setScene(directorScene);
         director.show();
         
         }

@@ -20,7 +20,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TableView fx:id="movieTable" layoutX="18.0" layoutY="105.0" prefHeight="281.0" prefWidth="801.0">
+      <TableView fx:id="movieTable" layoutX="18.0" layoutY="105.0" onMouseClicked="#tableRowClick" prefHeight="281.0" prefWidth="801.0">
          <columns>
             <TableColumn prefWidth="229.0" text="Name" />
             <TableColumn prefWidth="98.0" text="Director" />

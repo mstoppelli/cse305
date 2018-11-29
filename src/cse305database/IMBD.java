@@ -6,6 +6,7 @@
 package cse305database;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,6 +27,9 @@ public class IMBD extends Application {
         Scene scene = new Scene(root);
         s = stage;
         stage.setScene(scene);
+        stage.setOnHidden(e -> {
+            Platform.exit();
+            });     
         stage.show();
     }
 

@@ -62,7 +62,7 @@ public class SearchController implements Initializable {
          gender.setText(one.getGender());
          
           ImageView image = (ImageView)actorInformation.lookup("#image");
-          URL url = getClass().getResource("");
+         
         
         Image testImage = new Image("/Actors/"+one.getName()+".jpg");
         if(testImage==null){
