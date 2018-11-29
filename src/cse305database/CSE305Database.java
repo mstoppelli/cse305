@@ -34,7 +34,11 @@ public class CSE305Database {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-       
+       ArrayList<Movie> answers = searchMovies("pirates");
+       for (Movie m : answers)
+       {
+            System.out.println(m.getName());
+       }
     }
     public static ArrayList<Movie> searchMovies(String phrase)
     {
@@ -293,6 +297,10 @@ public class CSE305Database {
                 create.executeUpdate();
                 return "True";
              
+        }
+        catch (SQLException ex)
+        {
+            return ex.getMessage();
         }
         catch (Exception e)
         {
