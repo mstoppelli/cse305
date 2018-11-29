@@ -103,7 +103,7 @@ public class FXMLDocumentController implements Initializable {
      @FXML
      private void actor(ActionEvent event) {
          Scene s1 = s.getScene();
-   SplitMenuButton split = (SplitMenuButton)s1.lookup("#menuButton");
+        SplitMenuButton split = (SplitMenuButton)s1.lookup("#menuButton");
         split.setText("Actor"); 
          movieSearch=false;
         actorSearch=true;
@@ -119,8 +119,8 @@ public class FXMLDocumentController implements Initializable {
         directorSearch=true;
     }
      
-     
-     
+    
+     public static Scene actorScene;
      @FXML
     private void search(MouseEvent event) throws IOException{
         Scene s1 = s.getScene();
@@ -130,24 +130,24 @@ public class FXMLDocumentController implements Initializable {
         if(actorSearch){
             
           Parent root = FXMLLoader.load(getClass().getResource("Search.fxml"));
-        Scene scene = new Scene(root);
+         actorScene = new Scene(root);
         
          Stage actor = new Stage();
          actor.setTitle("Actor Search");
-          Text actorResults = (Text)scene.lookup("#searchResultsActor");
+          Text actorResults = (Text)actorScene.lookup("#searchResultsActor");
         actorResults.setText("Search Results for \"" + searchBar + "\"");
         
-        TableView actorTable = (TableView)scene.lookup("#actorTable");
+        TableView actorTable = (TableView)actorScene.lookup("#actorTable");
         actorTable.setPlaceholder(new Label("No search results for \"" + searchBar + "\""));
         ArrayList<Actor> actorArrayList;
         
         //COMMENT OUT THIS PART OF THE CODE!!!
-        actorArrayList = new ArrayList<>();
+        /*actorArrayList = new ArrayList<>();
         Date testDate = new Date();
         Actor testActor = new Actor(0, "Name",100,testDate,"Male");
-        actorArrayList.add(testActor);
+        actorArrayList.add(testActor);*/
         
-        //actorArrayList = searchActors(searchBar);
+        actorArrayList = searchActors(searchBar);
         if(actorArrayList.size() !=0){
              ObservableList<Actor> ob = FXCollections.observableArrayList(actorArrayList);
             TableColumn name =  (TableColumn) actorTable.getColumns().get(0);
@@ -168,7 +168,7 @@ public class FXMLDocumentController implements Initializable {
                );
              actorTable.setItems(ob);
         }
-        actor.setScene(scene);
+        actor.setScene(actorScene);
         actor.show();
             
         }else if(movieSearch){
@@ -185,11 +185,11 @@ public class FXMLDocumentController implements Initializable {
         ArrayList<Movie> movieArrayList;
         
         //Comment out this part here
-        movieArrayList = new ArrayList<>();
+        /*movieArrayList = new ArrayList<>();
         Movie testMovie = new Movie(0,"TEST", "DIRECTOR", "FICTIOn",5.0,"Adult",2,2006,"null");
-        movieArrayList.add(testMovie);
+        movieArrayList.add(testMovie);*/
         
-        //movieArrayList = searchMovies(searchBar);
+        movieArrayList = searchMovies(searchBar);
         if(movieArrayList.size() != 0){
             
             ObservableList<Movie> ob = FXCollections.observableArrayList(movieArrayList);
@@ -246,10 +246,10 @@ public class FXMLDocumentController implements Initializable {
         ArrayList<Director> directorArrayList;
         
         //COMMENT THIS PART BELOW
-        directorArrayList = new ArrayList<>();
-        directorArrayList.add(new Director(0, "NAME", 100));
+        //directorArrayList = new ArrayList<>();
+        //directorArrayList.add(new Director(0, "NAME", 100));
      
-        //directorArrayList = searchDirectors(searchBar);
+        directorArrayList = searchDirectors(searchBar);
         
         if(directorArrayList.size() != 0){
             ObservableList<Director> ob = FXCollections.observableArrayList(directorArrayList);
@@ -314,23 +314,25 @@ public class FXMLDocumentController implements Initializable {
          ImageView jeff = (ImageView) s1.lookup("#jeff");
         jeff.setVisible(true);    
     }
+    private static Stage moviePage;
+    private static Stage actorPage;
    @FXML
     private void viewMoviePage(MouseEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("Movie.fxml"));
         Scene scene = new Scene(root);
-         stageLogin = new Stage();
-        stageLogin.setTitle("Movie");
-        stageLogin.setScene(scene);
-        stageLogin.show();
+         moviePage = new Stage();
+        moviePage.setTitle("Movie");
+        moviePage.setScene(scene);
+        moviePage.show();
     }
     @FXML
     private void viewActorPage(MouseEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("Actor.fxml"));
         Scene scene = new Scene(root);
-         stageLogin = new Stage();
-        stageLogin.setTitle("Actor");
-        stageLogin.setScene(scene);
-        stageLogin.show();
+          actorPage = new Stage();
+        actorPage.setTitle("Actor");
+        actorPage.setScene(scene);
+        actorPage.show();
     
     }
     

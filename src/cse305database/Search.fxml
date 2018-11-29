@@ -20,7 +20,7 @@
             <Image url="@IMBD.png" />
          </image>
       </ImageView>
-      <TableView fx:id="actorTable" layoutX="15.0" layoutY="97.0" prefHeight="281.0" prefWidth="655.0">
+      <TableView fx:id="actorTable" layoutX="15.0" layoutY="97.0" onMouseClicked="#tableRow" prefHeight="281.0" prefWidth="655.0">
          <columns>
             <TableColumn fx:id="actorName" prefWidth="249.0" text="Name" />
             <TableColumn fx:id="actorHeight" prefWidth="85.0" text="Height" />
