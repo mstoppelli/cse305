@@ -34,7 +34,7 @@ public class CSE305Database {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-       ArrayList<Movie> answers = searchMovies("pirates");
+       ArrayList<Movie> answers = searchMovies("Pirates");
        for (Movie m : answers)
        {
             System.out.println(m.getName());
@@ -47,10 +47,11 @@ public class CSE305Database {
             Connection conn = MyConnection.getConnection();
             String statement = "SELECT * FROM Movie";
             PreparedStatement st = conn.prepareStatement(statement);
-            String regex = "." + "phrase" + ".";
+            String regex = "(.*)" + phrase + "(.*)";
             ResultSet rs = st.executeQuery();
             while(rs.next()) {
                 String movieName = rs.getString("Name");
+                
                 if(movieName.matches(regex)) {
                     int movieID = rs.getInt("ID");
                     matchedMovies.add(getMovie(movieID));
@@ -69,7 +70,7 @@ public class CSE305Database {
             Connection conn = MyConnection.getConnection();
             String statement = "SELECT * FROM director";
             PreparedStatement st = conn.prepareStatement(statement);
-            String regex = "." + phrase + ".";
+            String regex = "(.*)" + phrase + "(.*)";
             ResultSet rs = st.executeQuery();
             while(rs.next()) {
                 String directorName = rs.getString("Name");
@@ -91,7 +92,7 @@ public class CSE305Database {
             Connection conn = MyConnection.getConnection();
             String statement = "SELECT * FROM actor";
             PreparedStatement st = conn.prepareStatement(statement);
-            String regex = "." + "phrase" + ".";
+            String regex = "(.*)" + phrase + "(.*)";
             ResultSet rs = st.executeQuery();
             while(rs.next()) {
                 String actorName = rs.getString("Name");
