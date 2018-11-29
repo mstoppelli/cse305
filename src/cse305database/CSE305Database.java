@@ -65,7 +65,7 @@ public class CSE305Database {
             Connection conn = MyConnection.getConnection();
             String statement = "SELECT * FROM director";
             PreparedStatement st = conn.prepareStatement(statement);
-            String regex = "." + "phrase" + ".";
+            String regex = "." + phrase + ".";
             ResultSet rs = st.executeQuery();
             while(rs.next()) {
                 String directorName = rs.getString("Name");
