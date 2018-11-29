@@ -5,10 +5,18 @@
  */
 package cse305database;
 
+import static cse305database.CSE305Database.getMovieReviews;
 import static cse305database.CSE305Database.searchActors;
 import static cse305database.CSE305Database.searchDirectors;
 import static cse305database.CSE305Database.searchMovies;
+import static cse305database.IMBD.actorBirthdays;
+
 import static cse305database.IMBD.s;
+import static cse305database.IMBD.topMovies;
+
+import static cse305database.SearchMovieController.movieInformation;
+import static cse305database.SearchMovieController.obReview;
+import static cse305database.SearchMovieController.one;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,8 +38,10 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -372,6 +382,128 @@ public class FXMLDocumentController implements Initializable {
         jeff.setVisible(false);
 
     }
+     
+     public  void  viewMovieInfo(MouseEvent event) throws IOException{
+         
+         ImageView testImageHello = (ImageView) event.getSource();
+         int testImageIndex = Integer.parseInt(testImageHello.getId().substring(testImageHello.getId().length()-1));
+      
+       
+     Parent root = FXMLLoader.load(getClass().getResource("Movie.fxml"));
+            Scene movieInformation = new Scene(root);
+            Stage movie = new Stage();
+         movie.setTitle("Movie Information");
+         
+          Text name = (Text)movieInformation.lookup("#name");
+         name.setText(topMovies.get(testImageIndex).getName());
+          Text director = (Text)movieInformation.lookup("#director");
+         director.setText(topMovies.get(testImageIndex).getDirectorName());
+            Text genre = (Text)movieInformation.lookup("#genre");
+         genre.setText(topMovies.get(testImageIndex).getGenre());
+            Text rating = (Text)movieInformation.lookup("#rating");
+         rating.setText(""+topMovies.get(testImageIndex).getRating());
+         
+           Text maturity = (Text)movieInformation.lookup("#maturity");
+         maturity.setText(topMovies.get(testImageIndex).getMaturityRating());
+          Text duration = (Text)movieInformation.lookup("#duration");
+         duration.setText(""+topMovies.get(testImageIndex).getDuration());
+         Text release = (Text)movieInformation.lookup("#release");
+         release.setText(""+topMovies.get(testImageIndex).getReleaseDate());
+         
+          TextArea reviewText = (TextArea)movieInformation.lookup("#reviewText");
+          Button reviewSubmit = (Button)movieInformation.lookup("#reviewSubmit");
+          TextField ratingTextField = (TextField)movieInformation.lookup("#ratingTextField");
+          Text errorMessage = (Text)movieInformation.lookup("#errorMessage");
+          if(LOGINGUI){
+             reviewText.setVisible(true);
+             reviewSubmit.setVisible(true);
+             ratingTextField.setVisible(true);
+             errorMessage.setVisible(false);
+         }else{
+              reviewText.setVisible(false);
+             reviewSubmit.setVisible(false);
+             ratingTextField.setVisible(false);
+              errorMessage.setVisible(false);
+          }
+          
+          ImageView image = (ImageView)movieInformation.lookup("#image");
+        
+        
+        Image testImage = new Image("/Movie/"+topMovies.get(testImageIndex).getMovieImage());
+        if(testImage==null){
+            System.out.print("NOT WORKING");
+        }
+        image.setImage(testImage);
+        
+        TableView reviewTable = (TableView)movieInformation.lookup("#reviewTable");
+         reviewTable.setPlaceholder(new Label("No reviews available"));
+         ArrayList<Review> reviewArrayList;
+         //COMMENT OUT EVERYTHING HERE!!!
+         Review testReview = new Review("username", 1234,5.4,"AWESOME MOVIE");
+         reviewArrayList = new ArrayList<>();
+         reviewArrayList.add(testReview);
+         
+         //YOU NEED THIS PART HERE
+         //reviewArrayList =  getMovieReviews(testMovieIMBD.getID());
+         ObservableList<Review> obReview;
+         if(reviewArrayList.size() != 0){
+              obReview = FXCollections.observableArrayList(reviewArrayList);
+             
+              TableColumn displayName =  (TableColumn) reviewTable.getColumns().get(0);
+            displayName.setCellValueFactory(
+            new PropertyValueFactory<Review,String>("username")
+             );
+            
+            TableColumn ratingCol =  (TableColumn) reviewTable.getColumns().get(1);
+            ratingCol.setCellValueFactory(
+            new PropertyValueFactory<Review,Double>("rating")
+             );
+            
+             TableColumn reviewTextCol =  (TableColumn) reviewTable.getColumns().get(2);
+            reviewTextCol.setCellValueFactory(
+            new PropertyValueFactory<Review,String>("reviewText")
+             );
+            reviewTable.setItems(obReview);
+         }
+         
+         movie.setScene(movieInformation);
+            movie.show();
+         }
+     
+     public void viewActorInfo(MouseEvent event) throws IOException{
+         
+         ImageView testImageHello = (ImageView) event.getSource();
+         int testImageIndex = Integer.parseInt(testImageHello.getId().substring(testImageHello.getId().length()-1));
+         testImageIndex=testImageIndex-5;
+      Parent root = FXMLLoader.load(getClass().getResource("Actor.fxml"));
+           Scene actorInformation = new Scene(root);
+            Stage actor = new Stage();
+         actor.setTitle("Actor Information");
+         
+         Text name = (Text)actorInformation.lookup("#name");
+         name.setText(actorBirthdays.get(testImageIndex).getName());
+         
+          Text height = (Text)actorInformation.lookup("#height");
+         height.setText(""+actorBirthdays.get(testImageIndex).getHeight());
+         
+          Text birthday = (Text)actorInformation.lookup("#birthday");
+         birthday.setText(actorBirthdays.get(testImageIndex).getBirthday().toString());
+         
+           Text gender = (Text)actorInformation.lookup("#gender");
+         gender.setText(actorBirthdays.get(testImageIndex).getGender());
+         
+          ImageView image = (ImageView)actorInformation.lookup("#image");
+         
+        
+        Image testImage = new Image("/Actors/"+actorBirthdays.get(testImageIndex).getName()+".jpg");
+        if(testImage==null){
+            System.out.print("NOT WORKING");
+        }
+        image.setImage(testImage);
+         
+         actor.setScene(actorInformation);
+        actor.show();
+     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
