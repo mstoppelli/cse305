@@ -42,22 +42,9 @@ public class IMBD extends Application {
         stage.setOnHidden(e -> {
             Platform.exit();
             });     
+        
+        
         topMovies = new ArrayList<>(topMovies(5));
-        
-        //NEED TO COMMENT OUT ALL OF THIS
-         /*topMovies = new ArrayList<>();
-         Movie testMovie1 = new Movie(0,"TEST", "DIRECTOR", "FICTIOn",5.0,"Adult",2,2006,"2012.jpg");
-         Movie testMovie2 = new Movie(0,"TEST", "DIRECTOR", "FICTIOn",5.0,"Adult",2,2006,"2012.jpg");
-         Movie testMovie3 = new Movie(0,"TEST", "DIRECTOR", "FICTIOn",5.0,"Adult",2,2006,"2012.jpg");
-         Movie testMovie4 = new Movie(0,"TEST", "DIRECTOR", "FICTIOn",5.0,"Adult",2,2006,"2012.jpg");
-         Movie testMovie5 = new Movie(0,"TEST", "DIRECTOR", "FICTIOn",5.0,"Adult",2,2006,"2012.jpg");
-        topMovies.add(testMovie1);
-        topMovies.add(testMovie2);
-        topMovies.add(testMovie3);
-        topMovies.add(testMovie4);
-        topMovies.add(testMovie5);*/
-        
-        
         ImageView image1 = (ImageView)scene.lookup("#image0");
         image1.setImage(new Image("/Movie/"+topMovies.get(0).getMovieImage()));
         
@@ -69,25 +56,7 @@ public class IMBD extends Application {
         image4.setImage(new Image("/Movie/"+topMovies.get(3).getMovieImage()));
         ImageView image5 = (ImageView)scene.lookup("#image4");
         image5.setImage(new Image("/Movie/"+topMovies.get(4).getMovieImage()));
-        
-        
-     actorBirthdays = new ArrayList<>(findActorsWithBirthday(12));
-       
-       //NEED TO COMMENT OUT ALL OF THIS
-       /*actorBirthdays = new ArrayList<>();
-        Date testDate = new Date();
-        Actor testActor1 = new Actor(0, "Bill Murray",100,testDate,"Male");
-       Actor testActor2 = new Actor(0, "Amy Poehler",300,testDate,"Female");
-        Actor testActor3 = new Actor(0, "Bill Murray",100,testDate,"Male");
-        Actor testActor4 = new Actor(0, "Bill Murray",100,testDate,"Male");
-        Actor testActor5 = new Actor(0, "Bill Murray",100,testDate,"Male");
-        actorBirthdays.add(testActor1);
-        actorBirthdays.add(testActor2);
-        actorBirthdays.add(testActor3);
-        actorBirthdays.add(testActor4);
-        actorBirthdays.add(testActor5);*/
-
-        
+        actorBirthdays = new ArrayList<>(findActorsWithBirthday(12));  
          ImageView image6 = (ImageView)scene.lookup("#image5");
         image6.setImage(new Image("/Actors/"+actorBirthdays.get(0).getName()+".jpg"));
         ImageView image7 = (ImageView)scene.lookup("#image6");

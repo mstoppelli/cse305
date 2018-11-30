@@ -5,11 +5,13 @@
  */
 package cse305database;
 
+import static cse305database.CSE305Database.findActorsWithBirthday;
 import static cse305database.CSE305Database.getMovie;
 import static cse305database.CSE305Database.getMovieReviews;
 import static cse305database.CSE305Database.searchActors;
 import static cse305database.CSE305Database.searchDirectors;
 import static cse305database.CSE305Database.searchMovies;
+import static cse305database.CSE305Database.topMovies;
 import static cse305database.IMBD.actorBirthdays;
 
 import static cse305database.IMBD.s;
@@ -104,7 +106,7 @@ public class FXMLDocumentController implements Initializable {
     private static boolean movieSearch = true;
     private static boolean actorSearch = false;
     private static boolean directorSearch = false;
-
+    
     
     @FXML
     private void movie(ActionEvent event) {
@@ -512,6 +514,34 @@ public class FXMLDocumentController implements Initializable {
          
          actor.setScene(actorInformation);
         actor.show();
+     }
+     
+     @FXML
+     public void refreshHomePage(MouseEvent event){
+         topMovies = new ArrayList<>(topMovies(5));
+        ImageView image1 = (ImageView)s.getScene().lookup("#image0");
+        image1.setImage(new Image("/Movie/"+topMovies.get(0).getMovieImage()));
+        
+        ImageView image2 = (ImageView)s.getScene().lookup("#image1");
+        image2.setImage(new Image("/Movie/"+topMovies.get(1).getMovieImage()));
+        ImageView image3 = (ImageView)s.getScene().lookup("#image2");
+        image3.setImage(new Image("/Movie/"+topMovies.get(2).getMovieImage()));
+        ImageView image4 = (ImageView)s.getScene().lookup("#image3");
+        image4.setImage(new Image("/Movie/"+topMovies.get(3).getMovieImage()));
+        ImageView image5 = (ImageView)s.getScene().lookup("#image4");
+        image5.setImage(new Image("/Movie/"+topMovies.get(4).getMovieImage()));
+        actorBirthdays = new ArrayList<>(findActorsWithBirthday(12));  
+         ImageView image6 = (ImageView)s.getScene().lookup("#image5");
+        image6.setImage(new Image("/Actors/"+actorBirthdays.get(0).getName()+".jpg"));
+        ImageView image7 = (ImageView)s.getScene().lookup("#image6");
+        image7.setImage(new Image("/Actors/"+actorBirthdays.get(1).getName()+".jpg"));
+        
+        ImageView image8 = (ImageView)s.getScene().lookup("#image7");
+        image8.setImage(new Image("/Actors/"+actorBirthdays.get(2).getName()+".jpg"));
+         ImageView image9 = (ImageView)s.getScene().lookup("#image8");
+        image9.setImage(new Image("/Actors/"+actorBirthdays.get(3).getName()+".jpg"));
+         ImageView image10 = (ImageView)s.getScene().lookup("#image9");
+        image10.setImage(new Image("/Actors/"+actorBirthdays.get(4).getName()+".jpg"));
      }
     
     @Override
