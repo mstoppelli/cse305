@@ -18,7 +18,7 @@
             <Font size="16.0" />
          </font></TextField>
       <Button layoutX="625.0" layoutY="46.0" mnemonicParsing="false" onMouseClicked="#search" text="Search" />
-      <ImageView fitHeight="65.0" fitWidth="157.0" layoutX="10.0" layoutY="15.0" onMouseClicked="#viewHomePage">
+      <ImageView fitHeight="65.0" fitWidth="157.0" layoutX="10.0" layoutY="15.0" onMouseClicked="#refreshHomePage">
          <image>
             <Image url="@IMBD.png" />
          </image>
