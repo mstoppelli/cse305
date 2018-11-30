@@ -118,7 +118,7 @@ public class SearchMovieController implements Initializable {
          
          //YOU NEED THIS PART HERE
          reviewArrayList =  getMovieReviews(one.getID());
-         System.out.println(reviewArrayList.size());
+        
     
               obReview = FXCollections.observableArrayList(reviewArrayList);
              

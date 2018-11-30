@@ -390,7 +390,7 @@ public class FXMLDocumentController implements Initializable {
       
        
      Parent root = FXMLLoader.load(getClass().getResource("Movie.fxml"));
-            Scene movieInformation = new Scene(root);
+             movieInformation = new Scene(root);
             Stage movie = new Stage();
          movie.setTitle("Movie Information");
          
@@ -445,7 +445,7 @@ public class FXMLDocumentController implements Initializable {
          
          //YOU NEED THIS PART HERE
          reviewArrayList =  getMovieReviews(topMovies.get(testImageIndex).getID());
-         ObservableList<Review> obReview;
+       
          if(reviewArrayList.size() != 0){
               obReview = FXCollections.observableArrayList(reviewArrayList);
              
