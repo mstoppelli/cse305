@@ -72,7 +72,15 @@ public class SearchMovieController implements Initializable {
           Text director = (Text)movieInformation.lookup("#director");
          director.setText(one.getDirectorName());
             Text genre = (Text)movieInformation.lookup("#genre");
-         genre.setText(one.getGenre());
+         String genreString = one.getGenre();
+            genreString = genreString.substring(0,28);
+            int genreNum = genreString.lastIndexOf("|");
+      genreString = genreString.substring(0,genreNum);
+                    
+         genre.setText(genreString);
+         
+         
+         
             Text rating = (Text)movieInformation.lookup("#rating");
          rating.setText(""+one.getRating());
          

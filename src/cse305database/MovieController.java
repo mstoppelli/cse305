@@ -94,7 +94,8 @@ public class MovieController implements Initializable {
                 addReview(newReview);
                 obReview.add(newReview);
                 Movie newMovie = getMovie(one.getID());
-                rating.setText(""+newMovie.getMaturityRating());
+                String f = String.format("%.2f", newMovie.getRating());
+                rating.setText(f);
                 
                 reviewTable.setItems(obReview);
                 reviewTable.refresh();
