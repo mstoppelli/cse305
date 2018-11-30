@@ -7,6 +7,7 @@ package cse305database;
  */
 
 import static cse305database.CSE305Database.addReview;
+import static cse305database.CSE305Database.getMovie;
 import static cse305database.FXMLDocumentController.LOGINGUI;
 import static cse305database.FXMLDocumentController.currentUser;
 import static cse305database.FXMLDocumentController.movieScence;
@@ -62,6 +63,8 @@ public class MovieController implements Initializable {
 }
     
     public void submitReview(MouseEvent event){
+        
+    Text rating = (Text)movieInformation.lookup("#rating");
     TableView reviewTable = (TableView)movieInformation.lookup("#reviewTable");
 
     TextArea reviewText = (TextArea)movieInformation.lookup("#reviewText");
@@ -90,6 +93,9 @@ public class MovieController implements Initializable {
                 //DO I need to add the review to the table?
                 addReview(newReview);
                 obReview.add(newReview);
+                Movie newMovie = getMovie(one.getID());
+                rating.setText(""+newMovie.getMaturityRating());
+                
                 reviewTable.setItems(obReview);
                 reviewTable.refresh();
               }     
