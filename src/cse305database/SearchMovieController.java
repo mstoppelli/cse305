@@ -6,6 +6,7 @@ package cse305database;
  * and open the template in the editor.
  */
 
+import static cse305database.CSE305Database.getMovie;
 import static cse305database.CSE305Database.getMovieReviews;
 import static cse305database.FXMLDocumentController.LOGINGUI;
 import static cse305database.FXMLDocumentController.actorScene;
@@ -75,14 +76,13 @@ public class SearchMovieController implements Initializable {
          String genreString = one.getGenre();
             genreString = genreString.substring(0,28);
             int genreNum = genreString.lastIndexOf("|");
-      genreString = genreString.substring(0,genreNum);
-                    
+      genreString = genreString.substring(0,genreNum);              
          genre.setText(genreString);
-         
-         
-         
+           
             Text rating = (Text)movieInformation.lookup("#rating");
-         rating.setText(""+one.getRating());
+        Movie newMovie = getMovie(one.getID());
+                String f = String.format("%.2f", newMovie.getRating());
+                rating.setText(f);
          
            Text maturity = (Text)movieInformation.lookup("#maturity");
          maturity.setText(one.getMaturityRating());

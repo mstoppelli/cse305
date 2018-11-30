@@ -80,7 +80,7 @@ public class MovieController implements Initializable {
       if(isDouble(ratingTextField.getText())){
               ratingDouble  = Double.parseDouble(ratingTextField.getText());
               if(ratingDouble < 0 || ratingDouble > 10){
-                   errorMessage.setText("Error: You did not enter a rating between 0 and 10");
+                   errorMessage.setText("Error: You did not enter a rating between 0 and 10!");
                    errorMessage.setVisible(true);
               }else{
                 Review newReview = new Review(userName, one.getID(), ratingDouble,reviewText.getText());
@@ -88,20 +88,24 @@ public class MovieController implements Initializable {
                 
                 reviewText.clear();
                 ratingTextField.clear();
-                //ADD REVIEW TO DATABASE
-                
-                //DO I need to add the review to the table?
-                addReview(newReview);
+                //ADD REVIEW RETURNS BOOLEAN
+             
+                if(addReview(newReview)){
                 obReview.add(newReview);
                 Movie newMovie = getMovie(one.getID());
                 String f = String.format("%.2f", newMovie.getRating());
                 rating.setText(f);
-                
                 reviewTable.setItems(obReview);
                 reviewTable.refresh();
+                }else{
+                 errorMessage.setText("Error: You have already made a review for this movie!");
+                 errorMessage.setVisible(true);
+                }
+                
+                
               }     
       }else{
-          errorMessage.setText("Error: You did not enter a rating between 0 and 10");
+          errorMessage.setText("Error: You did not enter a rating between 0 and 10!");
           errorMessage.setVisible(true);
       }
     }

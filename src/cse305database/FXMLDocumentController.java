@@ -5,6 +5,7 @@
  */
 package cse305database;
 
+import static cse305database.CSE305Database.getMovie;
 import static cse305database.CSE305Database.getMovieReviews;
 import static cse305database.CSE305Database.searchActors;
 import static cse305database.CSE305Database.searchDirectors;
@@ -407,8 +408,10 @@ public class FXMLDocumentController implements Initializable {
          genre.setText(genreString);
          
             Text rating = (Text)movieInformation.lookup("#rating");
-         rating.setText(""+topMovies.get(testImageIndex).getRating());
-         
+            Movie newMovie = getMovie(topMovies.get(testImageIndex).getID());
+                String f = String.format("%.2f", newMovie.getRating());
+                rating.setText(f);
+
            Text maturity = (Text)movieInformation.lookup("#maturity");
          maturity.setText(topMovies.get(testImageIndex).getMaturityRating());
           Text duration = (Text)movieInformation.lookup("#duration");
