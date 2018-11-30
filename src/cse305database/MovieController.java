@@ -6,6 +6,7 @@ package cse305database;
  * and open the template in the editor.
  */
 
+import static cse305database.CSE305Database.addReview;
 import static cse305database.FXMLDocumentController.LOGINGUI;
 import static cse305database.FXMLDocumentController.currentUser;
 import static cse305database.FXMLDocumentController.movieScence;
@@ -14,6 +15,7 @@ import static cse305database.SearchMovieController.obReview;
 import static cse305database.SearchMovieController.one;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -80,9 +82,13 @@ public class MovieController implements Initializable {
               }else{
                 Review newReview = new Review(userName, one.getID(), ratingDouble,reviewText.getText());
                 errorMessage.setVisible(false);
+                
+                reviewText.clear();
+                ratingTextField.clear();
                 //ADD REVIEW TO DATABASE
                 
                 //DO I need to add the review to the table?
+                addReview(newReview);
                 obReview.add(newReview);
                 reviewTable.setItems(obReview);
                 reviewTable.refresh();
