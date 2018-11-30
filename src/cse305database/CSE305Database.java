@@ -35,11 +35,15 @@ public class CSE305Database {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-       ArrayList<Movie> answers = searchMovies("Pirates");
-       for (Movie m : answers)
-       {
-            System.out.println(m.getName());
-       }
+       
+        ArrayList<Actor> actors = findActorsWithBirthday(0
+        );
+        for (Actor a : actors)
+        {
+            System.out.println(a.getName() + " " + a.getBirthday());
+        }
+      
+       
     }
     public static ArrayList<Movie> searchMovies(String phrase)
     {
