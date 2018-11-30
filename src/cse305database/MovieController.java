@@ -6,9 +6,29 @@ package cse305database;
  * and open the template in the editor.
  */
 
+import static cse305database.FXMLDocumentController.LOGINGUI;
+import static cse305database.FXMLDocumentController.currentUser;
+import static cse305database.FXMLDocumentController.movieScence;
+import static cse305database.SearchMovieController.movieInformation;
+import static cse305database.SearchMovieController.obReview;
+import static cse305database.SearchMovieController.one;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -24,5 +44,56 @@ public class MovieController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    public static boolean isDouble(String s)  
+{  
+  try  
+  {  
+    double d = Double.parseDouble(s);  
+    return true; 
+  }  
+  catch(Exception e)  
+  {  
+    return false;  
+  }  
+   
+}
+    
+    public void submitReview(MouseEvent event){
+    TableView reviewTable = (TableView)movieInformation.lookup("#reviewTable");
+
+    TextArea reviewText = (TextArea)movieInformation.lookup("#reviewText");
+    Button reviewSubmit = (Button)movieInformation.lookup("#reviewSubmit");
+    TextField ratingTextField = (TextField)movieInformation.lookup("#ratingTextField");
+    Text errorMessage = (Text)movieInformation.lookup("#errorMessage");
+    
+    if(LOGINGUI){
+      //create method to add review
+     String userName = currentUser.getUsername();
+       
+       Double ratingDouble;
+      if(isDouble(ratingTextField.getText())){
+              ratingDouble  = Double.parseDouble(ratingTextField.getText());
+              if(ratingDouble < 0 || ratingDouble > 10){
+                   errorMessage.setText("Error: You did not enter a rating between 0 and 10");
+                   errorMessage.setVisible(true);
+              }else{
+                Review newReview = new Review(userName, one.getID(), ratingDouble,reviewText.getText());
+                errorMessage.setVisible(false);
+                //ADD REVIEW TO DATABASE
+                
+                //DO I need to add the review to the table?
+                obReview.add(newReview);
+                reviewTable.setItems(obReview);
+                reviewTable.refresh();
+              }     
+      }else{
+          errorMessage.setText("Error: You did not enter a rating between 0 and 10");
+          errorMessage.setVisible(true);
+      }
+    }
+    
+    }
+   
     
 }

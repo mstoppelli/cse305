@@ -46,6 +46,8 @@ public class CreateAccountController implements Initializable {
             errorCreate.setVisible(false);
             setWelcomeText(display.getText());
             accountStage.close();
+            FXMLDocumentController.currentUser = CSE305Database.loginUser(user.getText(), pass.getText());
+            FXMLDocumentController.LOGINGUI = true;
         }else{
             errorCreate.setText(result);
             errorCreate.setVisible(true);

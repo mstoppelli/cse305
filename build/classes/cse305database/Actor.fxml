@@ -25,7 +25,7 @@
             <Font name="System Bold" size="28.0" />
          </font>
       </Text>
-      <Text fx:id="name" fill="WHITE" layoutX="360.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="431.109375">
+      <Text fx:id="name" fill="WHITE" layoutX="360.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="431.109375">
          <font>
             <Font size="24.0" />
          </font>
@@ -45,17 +45,17 @@
             <Font name="System Bold" size="28.0" />
          </font>
       </Text>
-      <Text fx:id="height" fill="WHITE" layoutX="360.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="344.109375">
+      <Text fx:id="height" fill="WHITE" layoutX="360.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="344.109375">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="birthday" fill="WHITE" layoutX="360.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="431.109375">
+      <Text fx:id="birthday" fill="WHITE" layoutX="360.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="431.109375">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="gender" fill="WHITE" layoutX="360.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="351.109375">
+      <Text fx:id="gender" fill="WHITE" layoutX="360.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="351.109375">
          <font>
             <Font size="24.0" />
          </font>

@@ -45,52 +45,52 @@
             <Font size="34.0" />
          </font>
       </Text>
-      <ImageView fx:id="brad" fitHeight="200.0" fitWidth="135.0" layoutX="12.0" layoutY="396.0" onMouseClicked="#viewActorPage">
+      <ImageView fx:id="image5" fitHeight="200.0" fitWidth="135.0" layoutX="12.0" layoutY="396.0" onMouseClicked="#viewActorInfo">
          <image>
             <Image url="@Actors/Brad%20Pitt.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="sarah" fitHeight="200.0" fitWidth="135.0" layoutX="161.0" layoutY="396.0" onMouseClicked="#viewActorPage">
+      <ImageView fx:id="image6" fitHeight="200.0" fitWidth="135.0" layoutX="161.0" layoutY="396.0" onMouseClicked="#viewActorInfo">
          <image>
             <Image url="@Actors/Sarah%20Silverman.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="cch" fitHeight="200.0" fitWidth="135.0" layoutX="312.0" layoutY="396.0" onMouseClicked="#viewActorPage">
+      <ImageView fx:id="image7" fitHeight="200.0" fitWidth="135.0" layoutX="312.0" layoutY="396.0" onMouseClicked="#viewActorInfo">
          <image>
             <Image url="@Actors/CCH%20Pounder.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="jeff" fitHeight="200.0" fitWidth="135.0" layoutX="623.0" layoutY="392.0" onMouseClicked="#viewActorPage">
+      <ImageView fx:id="image9" fitHeight="200.0" fitWidth="135.0" layoutX="623.0" layoutY="392.0" onMouseClicked="#viewActorInfo">
          <image>
             <Image url="@Actors/Jeff%20Bridges.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="steve" fitHeight="200.0" fitWidth="133.0" layoutX="467.0" layoutY="396.0" onMouseClicked="#viewActorPage">
+      <ImageView fx:id="image8" fitHeight="200.0" fitWidth="133.0" layoutX="467.0" layoutY="396.0" onMouseClicked="#viewActorInfo">
          <image>
             <Image url="@Actors/Steve%20Buscemi.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="Pirates" fitHeight="200.0" fitWidth="133.0" layoutX="13.0" layoutY="142.0" onMouseClicked="#viewMoviePage">
+      <ImageView fx:id="image0" fitHeight="200.0" fitWidth="133.0" layoutX="13.0" layoutY="142.0" onMouseClicked="#viewMovieInfo">
          <image>
             <Image url="@Movie/download.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="Avatar" fitHeight="200.0" fitWidth="133.0" layoutX="162.0" layoutY="142.0" onMouseClicked="#viewMoviePage">
+      <ImageView fx:id="image1" fitHeight="200.0" fitWidth="133.0" layoutX="162.0" layoutY="142.0" onMouseClicked="#viewMovieInfo">
          <image>
             <Image url="@Movie/avatar.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="legend" fitHeight="200.0" fitWidth="133.0" layoutX="313.0" layoutY="142.0" onMouseClicked="#viewMoviePage">
+      <ImageView fx:id="image2" fitHeight="200.0" fitWidth="133.0" layoutX="313.0" layoutY="142.0" onMouseClicked="#viewMovieInfo">
          <image>
             <Image url="@Movie/thelegendoftarzan.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="polar" fitHeight="200.0" fitWidth="133.0" layoutX="470.0" layoutY="144.0" onMouseClicked="#viewMoviePage">
+      <ImageView fx:id="image3" fitHeight="200.0" fitWidth="133.0" layoutX="470.0" layoutY="144.0" onMouseClicked="#viewMovieInfo">
          <image>
             <Image url="@Movie/thepolarexpress.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="up" fitHeight="200.0" fitWidth="133.0" layoutX="624.0" layoutY="142.0" onMouseClicked="#viewMoviePage">
+      <ImageView fx:id="image4" fitHeight="200.0" fitWidth="133.0" layoutX="624.0" layoutY="142.0" onMouseClicked="#viewMovieInfo">
          <image>
             <Image url="@Movie/up.jpg" />
          </image>
