@@ -387,7 +387,7 @@ public class FXMLDocumentController implements Initializable {
          
          ImageView testImageHello = (ImageView) event.getSource();
          int testImageIndex = Integer.parseInt(testImageHello.getId().substring(testImageHello.getId().length()-1));
-      
+         one = topMovies.get(testImageIndex);
        
      Parent root = FXMLLoader.load(getClass().getResource("Movie.fxml"));
              movieInformation = new Scene(root);
