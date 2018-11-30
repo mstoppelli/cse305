@@ -293,8 +293,8 @@ public class CSE305Database {
         }
         catch(SQLException e)
         {
-            if (e.getErrorCode() == 2627)
-                System.out.println("You have already made a review for this movie!");
+            //if (e.getErrorCode() == 2627)
+                //System.out.println("You have already made a review for this movie!");
             return false;
         }
         return true;

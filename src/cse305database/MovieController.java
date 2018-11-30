@@ -98,6 +98,7 @@ public class MovieController implements Initializable {
                 reviewTable.setItems(obReview);
                 reviewTable.refresh();
                 }else{
+                    System.out.println("made ith ere");
                  errorMessage.setText("Error: You have already made a review for this movie!");
                  errorMessage.setVisible(true);
                 }
