@@ -50,17 +50,17 @@ public class CSE305Database {
         ArrayList<Movie> matchedMovies = new ArrayList<>();
         try {
             Connection conn = MyConnection.getConnection();
-            String statement = "SELECT * FROM Movie";
+            String statement = "SELECT * FROM Movie WHERE NAME LIKE '%" + phrase + "%';";
             PreparedStatement st = conn.prepareStatement(statement);
-            String regex = "(.*)" + phrase + "(.*)";
-            Pattern regpattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+            //String regex = "(.*)" + phrase + "(.*)";
+            //Pattern regpattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
             ResultSet rs = st.executeQuery();
             while(rs.next()) {
                 String movieName = rs.getString("Name");
-                if(regpattern.matcher(movieName).matches()) {
+            //    if(regpattern.matcher(movieName).matches()) {
                     int movieID = rs.getInt("ID");
                     matchedMovies.add(getMovie(movieID));
-                }
+              //  }
             }
             
         } catch (SQLException ex) {
@@ -73,17 +73,17 @@ public class CSE305Database {
         ArrayList<Director> matchedDirectors = new ArrayList<>();
         try {
             Connection conn = MyConnection.getConnection();
-            String statement = "SELECT * FROM director";
+            String statement = "SELECT * FROM director WHERE NAME LIKE '%" + phrase + "%';";
             PreparedStatement st = conn.prepareStatement(statement);
-            String regex = "(.*)" + phrase + "(.*)";
-            Pattern regpattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+            //String regex = "(.*)" + phrase + "(.*)";
+            //Pattern regpattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
             ResultSet rs = st.executeQuery();
             while(rs.next()) {
                 String directorName = rs.getString("Name");
-                if(regpattern.matcher(directorName).matches()) {
+                //if(regpattern.matcher(directorName).matches()) {
                     int id = rs.getInt("ID");
                     matchedDirectors.add(getDirector(id));
-                }
+                //}
             }
             
         } catch (SQLException ex) {
@@ -96,17 +96,17 @@ public class CSE305Database {
         ArrayList<Actor> matchedActors = new ArrayList<>();
         try {
             Connection conn = MyConnection.getConnection();
-            String statement = "SELECT * FROM actor";
+            String statement = "SELECT * FROM actor WHERE NAME LIKE '%" + phrase + "%';";
             PreparedStatement st = conn.prepareStatement(statement);
-            String regex = "(.*)" + phrase + "(.*)";
-            Pattern regpattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+           // String regex = "(.*)" + phrase + "(.*)";
+           // Pattern regpattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
             ResultSet rs = st.executeQuery();
             while(rs.next()) {
                 String actorName = rs.getString("Name");
-                if(regpattern.matcher(actorName).matches()) {
-                    int id = rs.getInt("ID");
+           //     if(regpattern.matcher(actorName).matches()) {
+                   int id = rs.getInt("ID");
                     matchedActors.add(getActor(id));
-                }
+                //}
             }
             
         } catch (SQLException ex) {
@@ -272,11 +272,13 @@ public class CSE305Database {
                 PreparedStatement reviewSt = conn.prepareStatement(statement);
                 ResultSet reviews = reviewSt.executeQuery();
                 double totalRating = rating;
-          
+                System.out.println("rating = " + rating + "numReviews = " + numReviews);
                 while (reviews.next())
                 {
                     totalRating += reviews.getDouble("rating");
+                    
                 }
+                System.out.println("totalRating = " + totalRating);
                 rating = (totalRating) / numReviews;
                 statement = "Update Movie Set rating = " + rating + ", numReviews = " + numReviews + " WHERE ID = " + movieID;
                 st = conn.prepareStatement(statement);
