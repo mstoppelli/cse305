@@ -439,12 +439,12 @@ public class FXMLDocumentController implements Initializable {
          reviewTable.setPlaceholder(new Label("No reviews available"));
          ArrayList<Review> reviewArrayList;
          //COMMENT OUT EVERYTHING HERE!!!
-         Review testReview = new Review("username", 1234,5.4,"AWESOME MOVIE");
-         reviewArrayList = new ArrayList<>();
-         reviewArrayList.add(testReview);
+         //Review testReview = new Review("username", 1234,5.4,"AWESOME MOVIE");
+         //reviewArrayList = new ArrayList<>();
+         //reviewArrayList.add(testReview);
          
          //YOU NEED THIS PART HERE
-         //reviewArrayList =  getMovieReviews(testMovieIMBD.getID());
+         reviewArrayList =  getMovieReviews(topMovies.get(testImageIndex).getID());
          ObservableList<Review> obReview;
          if(reviewArrayList.size() != 0){
               obReview = FXCollections.observableArrayList(reviewArrayList);
