@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="641.0" prefWidth="684.0" style="-fx-background-color: #888888;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse305database.MovieController">
+<AnchorPane id="AnchorPane" prefHeight="641.0" prefWidth="1113.0" style="-fx-background-color: #888888;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cse305database.MovieController">
    <children>
       <ImageView fitHeight="66.0" fitWidth="140.0" layoutX="14.0" layoutY="14.0">
          <image>
@@ -20,7 +20,7 @@
             <Font name="System Bold" size="28.0" />
          </font>
       </Text>
-      <Text fx:id="name" fill="WHITE" layoutX="332.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="344.109375">
+      <Text fx:id="name" fill="WHITE" layoutX="335.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="747.109375">
          <font>
             <Font size="24.0" />
          </font>
@@ -40,17 +40,17 @@
             <Font name="System Bold" size="28.0" />
          </font>
       </Text>
-      <Text fx:id="director" fill="WHITE" layoutX="332.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="344.109375">
+      <Text fx:id="director" fill="WHITE" layoutX="335.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="718.109375">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="genre" fill="WHITE" layoutX="332.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="344.109375">
+      <Text fx:id="genre" fill="WHITE" layoutX="333.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="711.109375">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="rating" fill="WHITE" layoutX="333.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="351.109375">
+      <Text fx:id="rating" fill="WHITE" layoutX="335.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="312.109375">
          <font>
             <Font size="24.0" />
          </font>
@@ -65,21 +65,13 @@
             <Image url="@Movie/up.jpg" />
          </image>
       </ImageView>
-      <TableView fx:id="reviewTable" layoutX="15.0" layoutY="352.0" prefHeight="193.0" prefWidth="637.0">
+      <TableView fx:id="reviewTable" layoutX="15.0" layoutY="352.0" prefHeight="193.0" prefWidth="1060.0">
         <columns>
-          <TableColumn fx:id="displayName" prefWidth="113.19977188110352" text="Username" />
-            <TableColumn prefWidth="88.78700256347656" text="Rating" />
-          <TableColumn prefWidth="555.2129974365234" text="Reviews" />
+          <TableColumn fx:id="displayName" prefWidth="150.0" text="Username" />
+            <TableColumn prefWidth="105.0" text="Rating" />
+          <TableColumn prefWidth="504.0" text="Reviews" />
         </columns>
       </TableView>
-      <TextArea fx:id="reviewText" layoutX="17.0" layoutY="578.0" prefHeight="44.0" prefWidth="453.0" promptText="Write a review...">
-         <font>
-            <Font size="16.0" />
-         </font></TextArea>
-      <Button fx:id="reviewSubmit" layoutX="576.0" layoutY="584.0" mnemonicParsing="false" onMouseClicked="#submitReview" text="Submit">
-         <font>
-            <Font size="16.0" />
-         </font></Button>
       <Text fill="WHITE" layoutX="193.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maturity:" wrappingWidth="125.21875">
          <font>
             <Font name="System Bold" size="28.0" />
@@ -105,16 +97,24 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="release" fill="WHITE" layoutX="333.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="351.109375">
+      <Text fx:id="release" fill="WHITE" layoutX="333.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HELLO WORLD" wrappingWidth="343.109375">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="ratingTextField" layoutX="481.0" layoutY="584.0" prefHeight="27.0" prefWidth="76.0" promptText="Rating">
+      <TextArea fx:id="reviewText" layoutX="17.0" layoutY="578.0" prefHeight="44.0" prefWidth="843.0" promptText="Write a review...">
+         <font>
+            <Font size="16.0" />
+         </font></TextArea>
+      <TextField fx:id="ratingTextField" layoutX="872.0" layoutY="584.0" prefHeight="27.0" prefWidth="76.0" promptText="Rating">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
+      <Button fx:id="reviewSubmit" layoutX="968.0" layoutY="584.0" mnemonicParsing="false" onMouseClicked="#submitReview" text="Submit">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
       <Text fx:id="errorMessage" fill="#a41e1e" layoutX="18.0" layoutY="567.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error: Rating needs to be between 0 and 10">
          <font>
             <Font size="16.0" />
