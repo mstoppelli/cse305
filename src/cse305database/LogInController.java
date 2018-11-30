@@ -48,6 +48,8 @@ public class LogInController implements Initializable {
             error.setVisible(false);
             setWelcomeText(user);
             stageLogin.close();
+            FXMLDocumentController.LOGINGUI = true;
+            FXMLDocumentController.currentUser = user;
         }
         
     }
