@@ -269,7 +269,7 @@ public class CSE305Database {
                 int numReviews = rs.getInt("NumReviews");
                 numReviews++;
                 rating = (rating + newRating) / numReviews;
-                statement = "Update Movie Set rating = " + rating + ", numReviews = " + numReviews + " WHERE MovieID = " + movieID;
+                statement = "Update Movie Set rating = " + rating + ", numReviews = " + numReviews + " WHERE ID = " + movieID;
                 st = conn.prepareStatement(statement);
                 st.executeUpdate();
             }
