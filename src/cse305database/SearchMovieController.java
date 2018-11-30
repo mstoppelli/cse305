@@ -118,7 +118,8 @@ public class SearchMovieController implements Initializable {
          
          //YOU NEED THIS PART HERE
          reviewArrayList =  getMovieReviews(one.getID());
-         if(reviewArrayList.size() != 0){
+         System.out.println(reviewArrayList.size());
+    
               obReview = FXCollections.observableArrayList(reviewArrayList);
              
               TableColumn displayName =  (TableColumn) reviewTable.getColumns().get(0);
@@ -136,7 +137,7 @@ public class SearchMovieController implements Initializable {
             new PropertyValueFactory<Review,String>("reviewText")
              );
             reviewTable.setItems(obReview);
-         }
+         
          
          movie.setScene(movieInformation);
             movie.show();
