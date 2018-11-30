@@ -255,6 +255,50 @@ public class CSE305Database {
         }
         return null;
     }
+    private static void updateMovieRating(int movieID, double newRating)
+    {
+        try
+        {
+            Connection conn = MyConnection.getConnection();
+            String statement = "Select * From Movie where ID = " + movieID;
+            PreparedStatement st = conn.prepareStatement(statement);
+            ResultSet rs = st.executeQuery();
+            if (rs.next())
+            {
+                double rating = rs.getDouble("Rating");
+                int numReviews = rs.getInt("NumReviews");
+                numReviews++;
+                rating = (rating + newRating) / numReviews;
+                statement = "Update Movie Set rating = " + rating + ", numReviews = " + numReviews + " WHERE MovieID = " + movieID;
+                st = conn.prepareStatement(statement);
+                st.executeUpdate();
+            }
+        }
+        catch (SQLException ex)
+        {
+            System.out.println(ex);
+        }
+    }
+    public static boolean addReview(Review r)
+    {
+        //How do I handle a user updating their review? Are we allowing that
+        try
+        {
+            Connection conn = MyConnection.getConnection();
+            //statement = "INSERT INTO User(Username, Password, Email, DisplayName) VALUES " + "('" + username + "', '" + password + "', '" + email + "', '" + displayName + "')";
+            String statement = "Insert into Reviews(Username, MovieID, Rating, ReviewText) VALUES " + "('" + r.getUsername() + "', '" + r.getMovieID() + "', '" + r.getRating() + "', '" + r.getReviewText() + "')";
+            PreparedStatement st = conn.prepareStatement(statement);
+            st.executeUpdate();
+            updateMovieRating(r.getMovieID(), r.getRating());
+        }
+        catch(SQLException e)
+        {
+            if (e.getErrorCode() == 2627)
+                System.out.println("You have already made a review for this movie!");
+            return false;
+        }
+        return true;
+    }
     
     public static Director getDirector(int id) {
         try {
