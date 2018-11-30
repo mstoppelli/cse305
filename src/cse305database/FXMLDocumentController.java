@@ -401,9 +401,9 @@ public class FXMLDocumentController implements Initializable {
          director.setText(topMovies.get(testImageIndex).getDirectorName());
             Text genre = (Text)movieInformation.lookup("#genre");
             String genreString = topMovies.get(testImageIndex).getGenre();
-            genreString = genreString.substring(0, Math.min(genreString.length(), 28));
-            int genreNum = genreString.lastIndexOf("|");
-      genreString = genreString.substring(0,genreNum);
+            //genreString = genreString.substring(0, Math.min(genreString.length(), 28));
+            //int genreNum = genreString.lastIndexOf("|");
+      //genreString = genreString.substring(0,genreNum);
                     
          genre.setText(genreString);
          

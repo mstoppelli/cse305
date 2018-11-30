@@ -265,10 +265,19 @@ public class CSE305Database {
             ResultSet rs = st.executeQuery();
             if (rs.next())
             {
-                double rating = rs.getDouble("Rating");
                 int numReviews = rs.getInt("NumReviews");
+                double rating = rs.getDouble("rating");
                 numReviews++;
-                rating = (rating + newRating) / numReviews;
+                statement = "Select * From Reviews where MovieID = " + movieID;
+                PreparedStatement reviewSt = conn.prepareStatement(statement);
+                ResultSet reviews = reviewSt.executeQuery();
+                double totalRating = rating;
+          
+                while (reviews.next())
+                {
+                    totalRating += reviews.getDouble("rating");
+                }
+                rating = (totalRating) / numReviews;
                 statement = "Update Movie Set rating = " + rating + ", numReviews = " + numReviews + " WHERE ID = " + movieID;
                 st = conn.prepareStatement(statement);
                 st.executeUpdate();
