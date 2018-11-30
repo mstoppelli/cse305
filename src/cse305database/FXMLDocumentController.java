@@ -446,7 +446,7 @@ public class FXMLDocumentController implements Initializable {
          //YOU NEED THIS PART HERE
          reviewArrayList =  getMovieReviews(topMovies.get(testImageIndex).getID());
        
-         if(reviewArrayList.size() != 0){
+       
               obReview = FXCollections.observableArrayList(reviewArrayList);
              
               TableColumn displayName =  (TableColumn) reviewTable.getColumns().get(0);
@@ -464,7 +464,7 @@ public class FXMLDocumentController implements Initializable {
             new PropertyValueFactory<Review,String>("reviewText")
              );
             reviewTable.setItems(obReview);
-         }
+         
          
          movie.setScene(movieInformation);
             movie.show();
